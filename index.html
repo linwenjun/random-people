@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            padding-top: 100px;
+        }
+        #list {
+            margin-top: 100px;
+            position: relative;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        #list>li {
+            position: absolute;
+            background: #0CF;
+            border-radius: 5px;
+            height: 60px;
+            width: 90px;
+            text-align: center;
+            line-height: 60px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+        }
+    </style>
+    <script src="jquery-2.1.4.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script src="lodash-3.10.js"></script>
+    <script>
+        $(function() {
+            var getRandomEasingMethod = function() {
+                var methods = ["linear", "swing", "easeInQuad", "easeOutQuad",
+                "easeInOutQuad", "easeInCubic", "easeOutCubic",
+                "easeInOutCubic", "easeInQuart", "easeOutQuart",
+                "easeInOutQuart", "easeInQuint", "easeOutQuint",
+                "easeInOutQuint", "easeInExpo", "easeOutExpo",
+                "easeInOutExpo", "easeInSine", "easeOutSine",
+                "easeInOutSine", "easeInCirc", "easeOutCirc",
+                "easeInOutCirc", "easeInElastic", "easeOutElastic",
+                "easeInOutElastic", "easeInBack", "easeOutBack",
+                "easeInOutBack", "easeInBounce", "easeOutBounce",
+                "easeInOutBounce"];
+
+                var rndIdx = parseInt(Math.random() * methods.length);
+                // rndIdx = 20;
+                return methods[rndIdx];
+            }
+
+            function getRandomColor() {
+
+                var rgb = [_.random(10, 200), _.random(10, 200), _.random(10, 200)];
+                return "rgba(" + rgb.join(', ') + ', 0.5)';
+            }
+
+            function move($jqEle, pos) {
+                $jqEle.animate(pos, {
+                    duration: 500,
+                    specialEasing: {
+                        top: getRandomEasingMethod(),
+                        left: getRandomEasingMethod()
+                    }
+                })
+            }
+
+            $(document).on("keypress", function() {
+                var result = _(0).range(9).shuffle().map(function(val) {
+                    return {
+                        top: 100 * (val % 3),
+                        left: 100 * parseInt(val / 3),
+                        backgroundColor: getRandomColor()
+                    }
+                }).value();
+
+                $("#list>li").each(function(i, jqEle) {
+                    move($(jqEle), result[i]);
+                });
+            })
+        });
+    </script>
+</head>
+<body>
+    <ul id="list">
+        <li>翁娇娇</li>
+        <li>刘玉田</li>
+        <li>马铭</li>
+        <li>王利涛</li>
+        <li>邓志阳</li>
+        <li>王翔</li>
+        <li>刘磊</li>
+        <li>罗晶辉</li>
+        <li>王旭桐</li>
+    </ul>
+</body>
+</html>
