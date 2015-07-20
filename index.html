@@ -67,6 +67,12 @@
                 })
             }
 
+            var euraisa = ['翁娇娇','刘玉田','马铭','王利涛','邓志阳','王翔','刘磊','罗晶辉','王旭桐'];
+
+            euraisa.forEach(function(val) {
+                $("#list").append($("<li>").text(val));
+            })
+
             $(document).on("keypress", function() {
                 var result = _(0).range(9).shuffle().map(function(val) {
                     return {
@@ -85,15 +91,6 @@
 </head>
 <body>
     <ul id="list">
-        <li>翁娇娇</li>
-        <li>刘玉田</li>
-        <li>马铭</li>
-        <li>王利涛</li>
-        <li>邓志阳</li>
-        <li>王翔</li>
-        <li>刘磊</li>
-        <li>罗晶辉</li>
-        <li>王旭桐</li>
     </ul>
 </body>
 </html>
