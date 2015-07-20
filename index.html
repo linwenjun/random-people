@@ -47,7 +47,7 @@
                 "easeInOutBounce"];
 
                 var rndIdx = parseInt(Math.random() * methods.length);
-                // rndIdx = 20;
+                rndIdx = 18;
                 return methods[rndIdx];
             }
 
@@ -67,25 +67,32 @@
                 })
             }
 
-            var euraisa = ['翁娇娇','刘玉田','马铭','王利涛','邓志阳','王翔','刘磊','罗晶辉','王旭桐'];
+            function shuffle() {
+              var length = $("#list li").length;
+              var result = _(0).range(length).shuffle().map(function(val) {
+                  return {
+                      top: 100 * (val % 3),
+                      left: 100 * parseInt(val / 3),
+                      backgroundColor: getRandomColor()
+                  }
+              }).value();
 
-            euraisa.forEach(function(val) {
+              $("#list>li").each(function(i, jqEle) {
+                  move($(jqEle), result[i]);
+              });
+            }
+
+            var euraisa = [];
+            euraisa.push(['翁娇娇','刘玉田','马铭','王利涛','邓志阳','王翔','刘磊','罗晶辉','王旭桐']);
+            euraisa.push(['周奕星', '李昱', '李丹阳', '刘昕羽', '姚丹萍', '王小龙', '杨林', '李亚', '孙恬静', '刘烨', '赵少羿', '吴雪', '刘娣', '史丹迪', '施采强', '郗茜', '曹蓉', '李媛媛', '潘晨', '王风珠', '王玥']);
+
+            euraisa[1].forEach(function(val) {
                 $("#list").append($("<li>").text(val));
             })
 
-            $(document).on("keypress", function() {
-                var result = _(0).range(9).shuffle().map(function(val) {
-                    return {
-                        top: 100 * (val % 3),
-                        left: 100 * parseInt(val / 3),
-                        backgroundColor: getRandomColor()
-                    }
-                }).value();
+            $(document).on("keypress", shuffle)
 
-                $("#list>li").each(function(i, jqEle) {
-                    move($(jqEle), result[i]);
-                });
-            })
+            shuffle();
         });
     </script>
 </head>
