@@ -11,7 +11,7 @@
             margin-top: 100px;
             position: relative;
             width: 300px;
-            margin: 0 auto;
+            margin-left: 40px;
         }
 
         #list>li {
@@ -71,8 +71,8 @@
               var length = $("#list li").length;
               var result = _(0).range(length).shuffle().map(function(val) {
                   return {
-                      top: 100 * (val % 3),
-                      left: 100 * parseInt(val / 3),
+                      top: 100 * (val % 2),
+                      left: 100 * parseInt(val / 2),
                       backgroundColor: getRandomColor()
                   }
               }).value();
