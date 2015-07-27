@@ -32,6 +32,7 @@
     <script src="jquery-ui.js"></script>
     <script src="lodash-3.10.js"></script>
     <script>
+        var ROW_COUNT = 6;
         $(function() {
             var getRandomEasingMethod = function() {
                 var methods = ["linear", "swing", "easeInQuad", "easeOutQuad",
@@ -71,8 +72,8 @@
               var length = $("#list li").length;
               var result = _(0).range(length).shuffle().map(function(val) {
                   return {
-                      top: 100 * (val % 3),
-                      left: 100 * parseInt(val / 3),
+                      top: 100 * (val % ROW_COUNT),
+                      left: 100 * parseInt(val / ROW_COUNT),
                       backgroundColor: getRandomColor()
                   }
               }).value();
@@ -95,7 +96,7 @@
             var euraisa = [];
             euraisa.push(['翁娇娇','刘玉田','马铭','王利涛','邓志阳',/*'王翔',*/'刘磊','罗晶辉','王旭桐']);
             euraisa.push(['周奕星', '李昱', '王小龙', '李亚', '赵少翌', '吴雪', '刘娣', '施采强', '李媛媛',  '王风珠', '王玥']);
-            euraisa.push(['杨林', '刘欣羽', '孙恬静', '潘晨', '郗茜', '李丹阳', '史丹迪', '刘烨', '曹蓉', '姚丹萍']);
+            euraisa.push(['杨林', '刘欣羽', '孙恬静', '潘晨', '郗茜', '李丹阳', '史丹迪', '刘烨', '曹蓉', '姚丹萍', '宋建华']);
 
             fillElement(euraisa[0]);
             shuffle();
