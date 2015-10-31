@@ -33,6 +33,7 @@
     <script src="lodash-3.10.js"></script>
     <script>
         var ROW_COUNT = 4;
+        var allPeople = [];
         $(function() {
             var getRandomEasingMethod = function() {
                 var methods = ["linear", "swing", "easeInQuad", "easeOutQuad",
@@ -48,7 +49,7 @@
                 "easeInOutBounce"];
 
                 var rndIdx = parseInt(Math.random() * methods.length);
-                // rndIdx = 18;
+                rndIdx = 18;
                 return methods[rndIdx];
             }
 
@@ -72,11 +73,17 @@
               var length = $("#list li").length;
               var result = _(0).range(length).shuffle().map(function(val) {
                   return {
+                      idx: val,
                       top: 100 * (val % ROW_COUNT),
                       left: 100 * parseInt(val / ROW_COUNT),
                       backgroundColor: getRandomColor()
                   }
               }).value();
+
+              console.log(allPeople);
+              console.log(result.map(function(item) {
+                return allPeople[item.idx];
+              }))
 
               $("#list>li").each(function(i, jqEle) {
                   move($(jqEle), result[i]);
@@ -95,10 +102,11 @@
 
             var euraisa = [];
             euraisa.push(['翁娇娇','刘玉田','马铭','王利涛','邓志阳',/*'王翔',*/'刘磊','罗晶辉','王旭桐']);
-            euraisa.push(['周奕星', '李昱', '王小龙', '李亚', '赵少翌', '吴雪', '刘娣', '施采强', '李媛媛',  '王风珠', '王玥']);
-            euraisa.push(['杨林', '刘欣羽', '孙恬静', '潘晨', '郗茜', '李丹阳', '李佳', '刘烨', '曹蓉', '姚丹萍', '宋建华']);
+            euraisa.push(['周奕星', '李昱', '王小龙', '李亚', '赵少翌', '施采强', '李媛媛',  '王风珠']);
+            euraisa.push(['杨林', '刘欣羽', '孙恬静', '潘晨', '郗茜', '李丹阳', '李佳', '刘烨', '曹蓉', '姚丹萍', '宋建华', '王玥', '吴雪', '刘娣']);
+            euraisa.push(['井寒', '董磊', '周奕星', '国莹', '王振璇', '孙亚楠', '孙恬静', '孙菁', '李亚', '李仕元', '赵少翌', '樊炜', '高阳', '李进', '杨楠晨', '陈曦宇', '李君丽', '王玥', '胡智', '王旭桐', '潘浩', '王绿菊', '罗杰', '翁娇娇', '姚丹萍', '李昱(女)', '郭鑫', '闫文婷', '刘欣倩', '林杨', '李昱(男)', '魏尧', '刘静'])
 
-            fillElement(euraisa[0]);
+            fillElement(euraisa[3]);
             shuffle();
 
             $(document).on("keypress", shuffle)
@@ -110,7 +118,7 @@
                 }
               });
 
-              var allPeople = [];
+              allPeople = [];
 
               data = klass.forEach(function(idx) {
                 allPeople = allPeople.concat(euraisa[idx]);
@@ -124,9 +132,10 @@
     </script>
 </head>
 <body>
-    <input class="select-class" type="checkbox" checked="checked" value="0">0
+    <!-- <input class="select-class" type="checkbox" checked="checked" value="0">0
     <input class="select-class" type="checkbox" value="1">1
     <input class="select-class" type="checkbox" value="2">2
+    <input class="select-class" type="checkbox" value="2">3 -->
     <ul id="list">
     </ul>
 </body>
