@@ -4,10 +4,18 @@ $(function() {
   nameList.sort(function(a, b) {
     return Math.random() > 0.5;
   }).forEach(function(name, idx) {
-    var $li = $('<li class="grid" />')
+    $('<li class="grid" />')
       .text(name)
       .css('color', colorList[idx % 5])
       .appendTo($('.circle'));
+
+      $('<li/>')
+        .text(name)
+        .on('click', function() {
+          $(this).siblings('.checked').removeClass('checked');
+          $(this).addClass('checked')
+        })
+        .appendTo($('#choose-box'));
   })
 
   var i=0;
