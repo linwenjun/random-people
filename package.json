@@ -18,6 +18,12 @@
   "homepage": "https://github.com/linwenjun/random-people#readme",
   "devDependencies": {
     "browserify": "^12.0.1",
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "jquery": "^2.1.4"
   }
 }
