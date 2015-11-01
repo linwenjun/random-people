@@ -38,7 +38,8 @@ ul, li {
   line-height: 60px;
   opacity: 0.9;
   border: 1px solid #CCC;
-  transition: transform 0.1s;
+  transition: transform 4s;
+  /* transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28); */
   font-size: 36px;
 }
 
