@@ -4,10 +4,7 @@ var source = require('vinyl-source-stream');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var buffer = require('vinyl-buffer');
-var transform = require('vinyl-transform');
 var minifyCss = require('gulp-minify-css');
-var streamify = require('gulp-streamify')
-var rename = require('gulp-rename')
 
 gulp.task('browserify', function() {
   var b = browserify({
@@ -20,14 +17,6 @@ gulp.task('browserify', function() {
     .pipe(buffer())
     .pipe(uglify())
     .pipe(gulp.dest('./dist/scripts/'));
-
-
-
-    // return browserify('./src/scripts/main.js')
-    //     .bundle()
-    //     .pipe(source('bundle.js'))
-    //     .pipe(uglify())
-    //     .pipe(gulp.dest('./dist/scripts/'));
 });
 
 gulp.task('css', function() {
