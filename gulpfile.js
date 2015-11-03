@@ -20,10 +20,18 @@ gulp.task('html', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['./dist/scripts/dist.js'], ['html']);
+  gulp.watch(['./dist/scripts/dist.js', './dist/css/dist.css', './index.html'], ['html']);
 });
 
-gulp.task('default', ['connect', 'watch']);
+gulp.task('watch-script', function() {
+  gulp.watch(['./src/scripts/*.js'], ['browserify'])
+})
+
+gulp.task('watch-css', function() {
+  gulp.watch(['./src/css/*.css'], ['css'])
+})
+
+gulp.task('default', ['connect', 'watch', 'watch-script', 'watch-css']);
 
 gulp.task('browserify', function() {
   var b = browserify({
