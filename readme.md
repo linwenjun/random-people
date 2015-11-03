@@ -9,11 +9,10 @@
 
 ====
 
--	gulp-connect
--	gulp-watch
--	整理gulp任务
--	gulp task list
+-	整理gulp任务 default build
+-	gulp task list：https://www.npmjs.com/package/gulp-help
 -	拆分javascript
+-	babel
 -	less
 -	bootstrap样式修改
 -	抽离颜色到样式
