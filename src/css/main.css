@@ -43,6 +43,11 @@ ul, li {
   /* ease-out */
   font-size: 36px;
 }
+.grid:nth-child(5n+0) {color: #019AA0;}
+.grid:nth-child(5n+1) {color: #AFD693;}
+.grid:nth-child(5n+2) {color: #FCE680;}
+.grid:nth-child(5n+3) {color: #F2AE25;}
+.grid:nth-child(5n+4) {color: #CF181D;}
 
 .point-left, .point-right {
   position: absolute;

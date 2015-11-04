@@ -3,20 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" href="dist/css/dist.css">
-  <script src="dist/scripts/dist.js"></script>
-
+  <link rel="stylesheet" href="css/dist.css">
+  <script src="scripts/dist.js"></script>
 </head>
 <body>
   <div id="box">
     <div class="point-left glyphicon glyphicon-chevron-right"></div>
     <div class="point-right  glyphicon glyphicon-chevron-left"></div>
     <div class="wrap">
-      <ul class="circle"></ul>
+      <ul class="circle">
+        <% students.forEach(function(item) { %>
+          <li  class="grid"><%= item%></li>
+        <% }) %>
+      </ul>
     </div>
   </div>
   <ul id="choose-box">
     <li data-idx="-1" class="checked">随机</li>
+    <% students.forEach(function(item, idx) { %>
+      <li data-idx="<%= idx%>"><%= item%></li>
+    <% }) %>
   </ul>
 </body>
 </html>

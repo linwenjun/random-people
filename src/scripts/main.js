@@ -8,18 +8,6 @@ var colorList = ['#019AA0', '#AFD693', '#FCE680', '#F2AE25', '#CF181D'];
 $(function() {
   var checkedIdx = -1;
 
-  nameList.forEach(function(name, idx) {
-    $('<li class="grid" />')
-      .text(name)
-      .css('color', colorList[idx % 5])
-      .appendTo($('.circle'));
-
-      $('<li/>')
-        .text(name)
-        .data('idx', idx)
-        .appendTo($('#choose-box'));
-  })
-
   $('#choose-box > li').on('click', function() {
     $(this).siblings('.checked').removeClass('checked');
     $(this).addClass('checked')
