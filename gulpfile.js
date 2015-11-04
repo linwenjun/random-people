@@ -6,6 +6,8 @@ var uglify = require('gulp-uglify');
 var buffer = require('vinyl-buffer');
 var minifyCss = require('gulp-minify-css');
 var connect = require('gulp-connect');
+var rimraf = require('gulp-rimraf');
+var gulps = require("gulp-series");
 
 gulp.task('connect', function() {
   connect.server({
@@ -31,7 +33,7 @@ gulp.task('watch-css', function() {
   gulp.watch(['./src/css/*.css'], ['css'])
 })
 
-gulp.task('default', ['connect', 'watch', 'watch-script', 'watch-css']);
+
 
 gulp.task('browserify', function() {
   var b = browserify({
@@ -53,11 +55,17 @@ gulp.task('css', function() {
     .pipe(gulp.dest('./dist/css'));
 })
 
-gulp.task('move', function() {
+gulp.task('move-fonts', function() {
   return gulp.src('node_modules/bootstrap/dist/fonts/*.*')
     .pipe(gulp.dest('./dist/fonts'));
 })
 
 gulp.task('clean', function() {
+  return gulp.src('./dist/*', { read: false }) // much faster
+    .pipe(rimraf());
+});
 
-})
+gulp.task('default', ['connect', 'watch', 'watch-script', 'watch-css']);
+gulp.task('build', ['clean'], function() {
+  gulp.run(['browserify', 'css', 'move-fonts']);
+});

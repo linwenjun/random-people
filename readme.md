@@ -9,12 +9,22 @@
 
 ====
 
--	整理gulp任务 default build
+-	express.js
+-	sockit.io
+-	增加后台页面
+
 -	gulp task list：https://www.npmjs.com/package/gulp-help
--	拆分javascript
--	babel
--	less
--	bootstrap样式修改
--	抽离颜色到样式
--	抽离数据
+
 -	增加文本框到数据
+
+-	bootstrap样式修改
+
+-	拆分javascript
+
+-	babel
+
+-	less
+
+-	抽离颜色到样式
+
+-	整理gulp任务同步方法
