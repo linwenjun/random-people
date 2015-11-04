@@ -1,3 +1,7 @@
+ul, li {
+  list-style: none;
+}
+
 #box {
   display: inline-block;
   position: relative;
