@@ -1,13 +1,14 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var buffer = require('vinyl-buffer');
 var minifyCss = require('gulp-minify-css');
 var connect = require('gulp-connect');
 var rimraf = require('gulp-rimraf');
 var gulps = require("gulp-series");
+var ejs = require('gulp-ejs');
 
 gulp.task('connect', function() {
   connect.server({
@@ -32,8 +33,6 @@ gulp.task('watch-script', function() {
 gulp.task('watch-css', function() {
   gulp.watch(['./src/css/*.css'], ['css'])
 })
-
-
 
 gulp.task('browserify', function() {
   var b = browserify({

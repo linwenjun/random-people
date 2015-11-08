@@ -3,10 +3,38 @@
 var $ = require('jquery');
 var nameList = require('./name-list');
 
-var colorList = ['#019AA0', '#AFD693', '#FCE680', '#F2AE25', '#CF181D'];
+var anmiationTypes = [
+  "cubic-bezier(0.18, 0.89, 0.32, 1.28)",
+  "transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)",
+  "ease-out",
+  "cubic-bezier(0.6,-0.28, 0.43, 0.23)",
+  "cubic-bezier(0.4, 0, 0.2, 1)",
+  "cubic-bezier(0.68, -0.55, 0.27, 1.55)"
+]
 
 $(function() {
+
+
+
   var checkedIdx = -1;
+  var gridHeight = $('.grid').height() / 2;
+  var translateZ =   gridHeight / Math.tan(Math.PI / nameList.length);
+  var deletaTop = translateZ - gridHeight;
+  var roundCount = 0;
+
+  function rotate(degree) {
+    var anmiIdx = parseInt(Math.random() * anmiationTypes.length);
+
+    $('.grid').each(function() {
+      var absDeg = degree + $(this).index() * (360 / nameList.length);
+      $(this).css({
+        'transform': 'rotateX(' + absDeg + 'deg) translateZ(' + translateZ + 'px)',
+        'transition-timing-function': anmiationTypes[2]
+      });
+    });
+  }
+
+  rotate(roundCount);
 
   $('#choose-box > li').on('click', function() {
     $(this).siblings('.checked').removeClass('checked');
@@ -14,22 +42,10 @@ $(function() {
     checkedIdx = ($(this).data('idx'));
   })
 
-  var i=0;
-  var gridHeight = $('.grid').height() / 2;
-  var translateZ =   gridHeight / Math.tan(Math.PI / nameList.length);
-  var deletaTop = translateZ - gridHeight;
   $('.wrap').css('top', deletaTop);
-  function rotate(degree) {
-    $('.grid').each(function() {
-      var absDeg = degree + $(this).index() * (360 / nameList.length);
-      $(this).css('transform', 'rotateX(' + absDeg + 'deg) translateZ(' + translateZ + 'px)');
-    });
-  }
-  var roundCount = 0;
-
-  rotate(roundCount);
 
   $('.grid').height();
+
   $(document).on('keydown', function(event) {
     var targetIdx;
 
@@ -45,4 +61,5 @@ $(function() {
     var needRotete = (roundCount - targetIdx) * (360 / nameList.length);
     rotate(needRotete);
   });
+
 });

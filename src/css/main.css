@@ -3,13 +3,13 @@ ul, li {
 }
 
 #box {
-  display: inline-block;
   position: relative;
   height: 600px;
   width: 400px;
   border: 3px solid #CF181D;
   overflow: hidden;
-  float: left;
+  /* float: left; */
+  margin: 0 auto;
 }
 .wrap {
   position: absolute;
@@ -38,9 +38,6 @@ ul, li {
   opacity: 0.9;
   border: 1px solid #CCC;
   transition: transform 4s;
-  transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
-  /* transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
-  /* ease-out */
   font-size: 36px;
 }
 .grid:nth-child(5n+0) {color: #019AA0;}
@@ -64,10 +61,10 @@ ul, li {
 
 #choose-box {
   font-size: 0;
+  display: none;
 }
 
 #choose-box li{
-  display: inline-block;
   width: 5em;
   text-align: center;
   height: 1.5em;
@@ -78,6 +75,7 @@ ul, li {
 }
 
 #choose-box li.checked{
+
   color: #FFF;
   background-color: #000;
 }
