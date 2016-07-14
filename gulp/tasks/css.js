@@ -7,4 +7,4 @@ gulp.task('css', function() {
     .pipe(concat('dist.css'))
     .pipe(minifyCss())
     .pipe(gulp.dest('./dist/css'));
-})
+});
